@@ -1,7 +1,7 @@
 <?php
 $is_auth = (bool) rand(0, 1);
 
-$user_name = 'Константин';
+$user_name = 'Дмитрий';
 $user_avatar = 'img/user.jpg';
 $categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
 $categoriesItems = [
@@ -41,6 +41,14 @@ $categoriesItems = [
     "URL Картинки" => "img/lot-6.jpg"
     ],
 ];
+
+function itemPrice($price){
+    if($price < 1000){
+        return $price;
+    } elseif ($price > 1000){
+        return number_format($price, 1, ",", " ") . " ₽";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -129,7 +137,7 @@ $categoriesItems = [
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=$item['Цена']?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?= itemPrice($item['Цена']);?></span>
                         </div>
                         <div class="lot__timer timer"></div>
                     </div>
