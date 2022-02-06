@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('Europe/Kiev');
+
 function renderTemplate($template, $array_data = []){
     $template = 'templates' . $template;
 
