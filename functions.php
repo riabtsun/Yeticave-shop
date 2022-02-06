@@ -1,19 +1,14 @@
 <?php
-$sections =[];
-$page_content = renderTemplate('templates/index.php', [section=>$sections]);
-$layout_content = renderTemplate('templates/layot.php', ['content'=>$page_content, 'title'=>'Главная']);
-print($layout_content);
 
-function inclideTemplate($template, $array_data = []){
+function renderTemplate($template, $array_data = []){
     $template = 'templates' . $template;
 
     if(!file_exists($template)){
         return '';
     }
 
-    extract($array_data);
-
     ob_start();
+    extract($array_data);
 
     require_once($template);
 
@@ -21,3 +16,5 @@ function inclideTemplate($template, $array_data = []){
 
     return $html_template;
 }
+
+
